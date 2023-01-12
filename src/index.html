@@ -10,22 +10,23 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title>Bingo</title>
   </head>
   <body>
     <div class="container">
-        <div class="player">
+      <div id="player"></div>
 
-        </div>
+      <div id="ball"> </div>
 
-        <div class="ball">
-
-        </div>
-
-        <div class="cpu">
-            
-        </div>
+      <div id="cpu"></div>
     </div>
+
+    <!-- Templates -->
+
+    <template id="div-cartoon">
+        <div class="numCartoon"><p>Numero aleatorio</p></div>
+    </template>
 
     <script src="index.js"></script>
   </body>
