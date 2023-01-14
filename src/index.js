@@ -113,6 +113,13 @@ function CreateCircle() {
   seccionCircle.appendChild(imageCenter);
 }
 
+function cambioCSSPlayer (array,num){
+  const valor =document.querySelectorAll(".bodyPlayer .numCartoon")
+  console.log(valor[num])
+  valor[num].querySelector("p").setAttribute("class","textColor")
+  //console.log(valor)  
+}
+
 function generarAleatorio(max, arrayNum) {
   max++;
   let num,
@@ -125,7 +132,12 @@ function generarAleatorio(max, arrayNum) {
   //Comparar número generado con el carton del jugador
 
   const [verPlayer,numPlayer] = repetidoPos(num,player);
-  const [verCPU,numCPU] = repetidoPos(num,CPU);
+  console.log(verPlayer,numPlayer)
+  if(verPlayer){
+     cambioCSSPlayer(player,numPlayer)
+  }
+  const [verCPU,numCPU] = repetidoPos(num,cpu);
+
 
   arrayNum.push(num);
   return arrayNum;
