@@ -38,10 +38,10 @@ function repetido(num, cartoon) {
 function repetidoPos(num, cartoon) {
   for (let i = 0; i < cartoon.length; i++) {
     if (num == cartoon[i]) {
-      return [true,i];
+      return [true, i];
     }
   }
-  return [false,undefined];
+  return [false, undefined];
 }
 
 //Función mostar en pantalla el cartón del jugador
@@ -54,7 +54,7 @@ function CreateCartoonPlayer(player) {
 
   const tituloPlayer = document.createElement("h2");
   tituloPlayer.setAttribute("class", "tituloPlayer");
-  tituloPlayer.textContent = "PLAYER";
+  tituloPlayer.textContent = "Porulo";
   cartoonPlayer.appendChild(tituloPlayer);
 
   player.forEach((num) => {
@@ -78,7 +78,7 @@ function CreateCartoonCPU(cpu) {
 
   const tituloCPU = document.createElement("h2");
   tituloCPU.setAttribute("class", "tituloCPU");
-  tituloCPU.textContent = "CPU";
+  tituloCPU.textContent = "Alverjita";
   cartoonCPU.appendChild(tituloCPU);
 
   cpu.forEach((num) => {
@@ -113,11 +113,16 @@ function CreateCircle() {
   seccionCircle.appendChild(imageCenter);
 }
 
-function cambioCSSPlayer (array,num){
-  const valor =document.querySelectorAll(".bodyPlayer .numCartoon")
-  console.log(valor[num])
-  valor[num].querySelector("p").setAttribute("class","textColor")
-  //console.log(valor)  
+function cambioCSSPlayer(array, num) {
+  const valor = document.querySelectorAll(".bodyPlayer .numCartoon");
+  console.log(valor[num]);
+  valor[num].setAttribute("style", "background-color: #D27F14");
+}
+
+function cambioCSScpu(array, num) {
+  const valor = document.querySelectorAll(".bodyCPU .numCartoon");
+  console.log(valor[num]);
+  valor[num].setAttribute("style", "background-color: #D27F14");
 }
 
 function generarAleatorio(max, arrayNum) {
@@ -128,16 +133,18 @@ function generarAleatorio(max, arrayNum) {
     num = Math.floor(Math.random() * max);
     ver = repetido(num, arrayNum);
   }
-  const numeroGenerado = document.querySelector("#ball #numAleatorio p").textContent=num; 
+  const numeroGenerado = (document.querySelector(
+    "#ball #numAleatorio p"
+  ).textContent = num);
   //Comparar número generado con el carton del jugador
 
-  const [verPlayer,numPlayer] = repetidoPos(num,player);
-  console.log(verPlayer,numPlayer)
-  if(verPlayer){
-     cambioCSSPlayer(player,numPlayer)
-  }
-  const [verCPU,numCPU] = repetidoPos(num,cpu);
+  const [verPlayer, numPlayer] = repetidoPos(num, player);
+  const [verCPU, numCPU] = repetidoPos(num, cpu);
 
+  if (verPlayer) {
+    cambioCSSPlayer(player, numPlayer);
+  }
+  if(verCPU)cambioCSScpu(cpu,numCPU);
 
   arrayNum.push(num);
   return arrayNum;
@@ -150,11 +157,11 @@ function detectarClickCirculo(arrayNum) {
 
   container.addEventListener("click", (e) => {
     if (e.target.classList.contains("ball")) {
-      if(valorAleatorio.length<91){
-      valorAleatorio = generarAleatorio(maxValor, arrayNum);
+      if (valorAleatorio.length < 91) {
+        valorAleatorio = generarAleatorio(maxValor, arrayNum);
 
-      //console.log(valorAleatorio);
-      CreateCartoonLower(valorAleatorio[valorAleatorio.length - 1]);
+        //console.log(valorAleatorio);
+        CreateCartoonLower(valorAleatorio[valorAleatorio.length - 1]);
       }
     }
   });

@@ -56,9 +56,6 @@ body {
   margin: auto;
   padding: 5px;
 }
-.container #cpu .bodyCPU .numCartoon .textColor {
-  color: red;
-}
 .container #ball {
   display: grid;
   justify-content: center;
