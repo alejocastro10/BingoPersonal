@@ -34,6 +34,16 @@ function repetido(num, cartoon) {
   }
   return false;
 }
+
+function repetidoPos(num, cartoon) {
+  for (let i = 0; i < cartoon.length; i++) {
+    if (num == cartoon[i]) {
+      return [true,i];
+    }
+  }
+  return [false,undefined];
+}
+
 //Función mostar en pantalla el cartón del jugador
 function CreateCartoonPlayer(player) {
   const cartoonPlayer = document.getElementById("player");
@@ -87,12 +97,9 @@ function CreateCartoonLower(numeros) {
   const cartoonNumeros = document.getElementById("numeros");
   const fragmentNumeros = document.createDocumentFragment();
   let template = document.querySelector("#div-cartoon").content;
-  const divCPU = document.createElement("div");
-
   template.querySelector(".numCartoon p").textContent = numeros;
   const clone = template.cloneNode(true);
   fragmentNumeros.appendChild(clone);
-
   cartoonNumeros.appendChild(fragmentNumeros);
 }
 
@@ -114,15 +121,15 @@ function generarAleatorio(max, arrayNum) {
     num = Math.floor(Math.random() * max);
     ver = repetido(num, arrayNum);
   }
-  mostrarNumeroBola(num)
+  const numeroGenerado = document.querySelector("#ball #numAleatorio p").textContent=num; 
+  //Comparar número generado con el carton del jugador
+
+  const [verPlayer,numPlayer] = repetidoPos(num,player);
+  const [verCPU,numCPU] = repetidoPos(num,CPU);
+
   arrayNum.push(num);
   return arrayNum;
 }
-
-function mostrarNumeroBola(num){
-  
-}
-
 //Detectar click en el circulo
 
 function detectarClickCirculo(arrayNum) {
@@ -134,7 +141,7 @@ function detectarClickCirculo(arrayNum) {
       if(valorAleatorio.length<91){
       valorAleatorio = generarAleatorio(maxValor, arrayNum);
 
-      console.log(valorAleatorio);
+      //console.log(valorAleatorio);
       CreateCartoonLower(valorAleatorio[valorAleatorio.length - 1]);
       }
     }

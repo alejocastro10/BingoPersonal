@@ -1,99 +1,108 @@
-$colorCartoon : red; 
+$colorCartoon: red;
 $bg-square: white;
 
-body{
-    background-color: blue;
+body {
+  background-color: blue;
 }
-.container{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    padding: 5%;
-    width: 100%;
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 5%;
+  width: 100%;
 
-    #player{
-        background-color: $colorCartoon;
+  #player {
+    background-color: $colorCartoon;
 
-        .tituloPlayer{
-            display: flex;
-            justify-content: center;
-            color: white;
-
-        }
-        .bodyPlayer{
-            display: grid;
-            grid-template-columns: repeat(5,auto);
-            gap: 5px;
-            margin: 0 5px 5px 5px;
-            .numCartoon{
-                background-color: $bg-square;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                p{
-                    margin: auto;
-                    padding: 5px;
-                }
-            }
-        }
+    .tituloPlayer {
+      display: flex;
+      justify-content: center;
+      color: white;
     }
-    #cpu{
-        background-color: $colorCartoon;
-        .tituloCPU{
-            display: flex;
-            justify-content: center;
-            color: white;
-        }
-        .bodyCPU{
-            display: grid;
-            grid-template-columns: repeat(5,auto);
-            gap: 5px;
-            margin: 0 5px 5px 5px;            
-            .numCartoon{
-                background-color: $bg-square;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                p{
-                    margin: auto;
-                    padding: 5px;
-                }
-            }
-        }
-    }
-    #ball{
+    .bodyPlayer {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: 5px;
+      margin: 0 5px 5px 5px;
+      .numCartoon {
+        background-color: $bg-square;
         display: flex;
+        align-items: center;
         justify-content: center;
-        .ball{
-            border-radius: 50%;
-            height: 160px;
-            width: 160px;
-            border: 5px solid black;
+        p {
+          margin: auto;
+          padding: 5px;
+        }
+      }
+    }
+  }
+  #cpu {
+    background-color: $colorCartoon;
+    .tituloCPU {
+      display: flex;
+      justify-content: center;
+      color: white;
+    }
+    .bodyCPU {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      gap: 5px;
+      margin: 0 5px 5px 5px;
+      .numCartoon {
+        background-color: $bg-square;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        p {
+          margin: auto;
+          padding: 5px;
+        }
+      }
+    }
+  }
+  #ball {
+    display: grid;
+    justify-content: center;
+    position: relative;
+    .ball {
+      border-radius: 50%;
+      height: 160px;
+      width: 160px;
+      border: 5px solid black;
+    }
+    #numAleatorio {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        p{
+            text-align: center;
+            margin: 0px;
         }
     }
-    #numeros{
-        border: 1px solid white;
-        height: 350px;
-        margin-top: 10%;
-        grid-column: 1/4;
-        display: grid;
-        gap:5px;
-        grid-template-columns: repeat(13,1fr);
-        grid-template-rows: repeat(7, 1fr);
-        padding: 10px;
-            .numCartoon{
-                background: white;
-                height: 40px;
-                width: 40px;
-                margin:0px;
-                display: flex;
-                align-content: center;
-                justify-content: center;
-                p{
-                    color: red;
-                    align-self: center;
-                }
-            }
-
+  }
+  #numeros {
+    border: 1px solid white;
+    height: 350px;
+    margin-top: 20px;
+    grid-column: 1/4;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    padding: 10px;
+    .numCartoon {
+      background: white;
+      height: 40px;
+      width: 40px;
+      padding: 0px;
+      margin: 0px;
+      display: grid;
+      justify-content: center;
+      align-items: center;    
+      p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
     }
+  }
 }
-
