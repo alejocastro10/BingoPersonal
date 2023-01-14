@@ -81,6 +81,21 @@ function CreateCartoonCPU(cpu) {
   cartoonCPU.appendChild(divCPU);
 }
 
+// Numeros en el recuadro inferior
+
+function CreateCartoonLower(numeros) {
+  const cartoonNumeros = document.getElementById("numeros");
+  const fragmentNumeros = document.createDocumentFragment();
+  let template = document.querySelector("#div-cartoon").content;
+  const divCPU = document.createElement("div");
+
+  template.querySelector(".numCartoon p").textContent = numeros;
+  const clone = template.cloneNode(true);
+  fragmentNumeros.appendChild(clone);
+
+  cartoonNumeros.appendChild(fragmentNumeros);
+}
+
 //Mostar imagen circular en pantalla
 
 function CreateCircle() {
@@ -91,20 +106,42 @@ function CreateCircle() {
   seccionCircle.appendChild(imageCenter);
 }
 
+function generarAleatorio(max, arrayNum) {
+  max++;
+  let num,
+    ver = true;
+  while (ver) {
+    num = Math.floor(Math.random() * max);
+    ver = repetido(num, arrayNum);
+  }
+  mostrarNumeroBola(num)
+  arrayNum.push(num);
+  return arrayNum;
+}
+
+function mostrarNumeroBola(num){
+  
+}
+
 //Detectar click en el circulo
 
-function detectarClickCirculo() {
+function detectarClickCirculo(arrayNum) {
+  let valorAleatorio = [];
   const container = document.querySelector(".container");
+
   container.addEventListener("click", (e) => {
     if (e.target.classList.contains("ball")) {
-      generarAleatorio()
+      if(valorAleatorio.length<91){
+      valorAleatorio = generarAleatorio(maxValor, arrayNum);
+
+      console.log(valorAleatorio);
+      CreateCartoonLower(valorAleatorio[valorAleatorio.length - 1]);
+      }
     }
   });
 }
 
-function generarAleatorio(){
-
-}
+//Detectar click en el jugado
 
 player = generarTarjeton(maxValor);
 cpu = generarTarjeton(maxValor);
@@ -116,5 +153,5 @@ cpu = generarTarjeton(maxValor);
 CreateCartoonPlayer(player);
 CreateCartoonCPU(cpu);
 CreateCircle();
-let arrayNum =[]
-detectarClickCirculo()
+let arrayNum = [];
+detectarClickCirculo(arrayNum);
